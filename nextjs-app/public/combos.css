@@ -1,0 +1,557 @@
+/* ========================================
+   Combos Page Styles
+   ======================================== */
+
+/* Combos Filter Bar */
+.combos-filter-bar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: rgba(5, 5, 16, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 90;
+}
+
+.combos-filter-bar .filter-btn {
+    display: inline-block;
+}
+
+/* Combos Container */
+.combos-container {
+    position: fixed;
+    inset: 110px 0 0 0;
+    overflow-y: auto;
+    padding: var(--spacing-xl);
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(26, 10, 46, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(10, 22, 40, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(22, 33, 62, 0.3) 0%, transparent 70%),
+        linear-gradient(180deg, var(--space-void) 0%, var(--space-deep) 100%);
+}
+
+/* Intro Section */
+.combos-intro {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-xl) 0;
+}
+
+.combos-intro h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    background: linear-gradient(135deg, #fff 0%, var(--color-commands) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 60px rgba(255, 215, 0, 0.3);
+}
+
+.combos-intro p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Combos Grid */
+.combos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Combo Card */
+.combo-card {
+    background: rgba(10, 10, 20, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: var(--spacing-lg);
+    cursor: pointer;
+    transition: all var(--transition-medium);
+    position: relative;
+    overflow: hidden;
+}
+
+.combo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--combo-color), transparent);
+    opacity: 0.6;
+}
+
+.combo-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px var(--combo-glow);
+}
+
+.combo-card:hover::before {
+    opacity: 1;
+}
+
+.combo-card.filtered-out {
+    display: none;
+}
+
+/* Card Header */
+.card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--combo-color);
+    box-shadow: 0 0 20px var(--combo-glow);
+    flex-shrink: 0;
+}
+
+.card-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--combo-color);
+    fill: none;
+    stroke-width: 1.5;
+}
+
+.card-title-group {
+    flex: 1;
+}
+
+.card-category {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--combo-color);
+    margin-bottom: 4px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* Card Body */
+.card-description {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Capability Pills */
+.card-capabilities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.capability-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+.capability-pill .pill-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--pill-color);
+    box-shadow: 0 0 6px var(--pill-color);
+}
+
+/* Card Footer */
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-difficulty {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.difficulty-dots {
+    display: flex;
+    gap: 3px;
+}
+
+.difficulty-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.difficulty-dot.filled {
+    background: var(--combo-color);
+    box-shadow: 0 0 6px var(--combo-color);
+}
+
+.card-arrow {
+    color: var(--text-muted);
+    font-size: 18px;
+    transition: transform var(--transition-fast);
+}
+
+.combo-card:hover .card-arrow {
+    transform: translateX(4px);
+    color: var(--combo-color);
+}
+
+/* ========================================
+   Modal Styles
+   ======================================== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-medium);
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    width: 90%;
+    max-width: 800px;
+    max-height: 85vh;
+    background: rgba(10, 10, 20, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    transform: translateY(20px) scale(0.95);
+    transition: transform var(--transition-medium);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-overlay.open .modal {
+    transform: translateY(0) scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--text-secondary);
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+/* Modal Header */
+.modal-header {
+    padding: var(--spacing-xl);
+    padding-right: 60px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.modal-category {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--modal-accent);
+    margin-bottom: var(--spacing-sm);
+}
+
+.modal-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
+.modal-description {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Modal Body */
+.modal-body {
+    padding: var(--spacing-xl);
+    overflow-y: auto;
+    flex: 1;
+}
+
+.modal-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.modal-section:last-child {
+    margin-bottom: 0;
+}
+
+.modal-section h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Capabilities Flow */
+.capabilities-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.capability-node {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    font-size: 13px;
+    color: var(--text-primary);
+}
+
+.capability-node .node-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    box-shadow: 0 0 8px currentColor;
+}
+
+.flow-arrow {
+    color: var(--text-muted);
+    font-size: 16px;
+}
+
+/* Workflow Steps */
+.workflow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.workflow-step {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: var(--transition-fast);
+}
+
+.workflow-step:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.step-number {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--modal-accent);
+    color: var(--space-void);
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.step-description {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.step-capability {
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    font-size: 11px;
+    color: var(--modal-accent);
+    margin-top: var(--spacing-xs);
+}
+
+/* Code Block */
+.modal-section .code-block {
+    position: relative;
+    margin-bottom: var(--spacing-sm);
+}
+
+.copy-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--modal-accent);
+    border: none;
+    border-radius: 8px;
+    color: var(--space-void);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.copy-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+
+.copy-btn.copied {
+    background: var(--color-config);
+}
+
+/* Tips List */
+.tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tips-list li {
+    position: relative;
+    padding-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.tips-list li::before {
+    content: '💡';
+    position: absolute;
+    left: 0;
+    font-size: 12px;
+}
+
+/* ========================================
+   Category Colors
+   ======================================== */
+.combo-card[data-category="development"] {
+    --combo-color: var(--color-agents);
+    --combo-glow: rgba(0, 212, 255, 0.2);
+}
+
+.combo-card[data-category="debugging"] {
+    --combo-color: var(--color-tools);
+    --combo-glow: rgba(255, 51, 102, 0.2);
+}
+
+.combo-card[data-category="refactoring"] {
+    --combo-color: var(--color-commands);
+    --combo-glow: rgba(255, 215, 0, 0.2);
+}
+
+.combo-card[data-category="devops"] {
+    --combo-color: var(--color-skills);
+    --combo-glow: rgba(255, 140, 0, 0.2);
+}
+
+.combo-card[data-category="research"] {
+    --combo-color: var(--color-integrations);
+    --combo-glow: rgba(153, 102, 255, 0.2);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 768px) {
+    .combos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-nav {
+        display: none;
+    }
+
+    .modal {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .modal-header {
+        padding: var(--spacing-lg);
+    }
+
+    .modal-body {
+        padding: var(--spacing-lg);
+    }
+}

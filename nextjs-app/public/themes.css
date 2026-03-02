@@ -1,0 +1,1316 @@
+/* ========================================
+   Theme Switcher UI Styles
+   ======================================== */
+
+.theme-switcher {
+    position: relative;
+    z-index: 150;
+}
+
+.theme-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: var(--text-primary);
+}
+
+.theme-btn svg {
+    width: 16px;
+    height: 16px;
+    opacity: 0.7;
+}
+
+.theme-current-name {
+    font-weight: 500;
+}
+
+/* Dropdown */
+.theme-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 220px;
+    background: rgba(12, 12, 24, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px) scale(0.98);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    padding: 6px;
+}
+
+.theme-switcher.open .theme-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+/* Theme Option */
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 10px 12px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: left;
+}
+
+.theme-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+}
+
+.theme-option.active {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+}
+
+.theme-preview {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+.theme-name {
+    flex: 1;
+    font-weight: 500;
+}
+
+.theme-check {
+    width: 16px;
+    height: 16px;
+    opacity: 0;
+    color: var(--color-config);
+    transition: opacity 0.15s ease;
+}
+
+.theme-option.active .theme-check {
+    opacity: 1;
+}
+
+/* ========================================
+   Deep Space Theme (Enhanced)
+   ======================================== */
+[data-theme="space"] {
+    --space-void: #000005;
+    --space-deep: #050510;
+    --space-nebula-1: #1a0a2e;
+    --space-nebula-2: #0a1a2e;
+    --space-nebula-3: #2e0a1a;
+}
+
+[data-theme="space"] .visualization-container {
+    background: linear-gradient(180deg, #000010 0%, #050218 20%, #0a0520 40%, #080418 60%, #030210 80%, #000008 100%) !important;
+}
+
+/* Nebula layer that renders above background but is visible */
+[data-theme="space"] #nebula-layer {
+    opacity: 1 !important;
+    background:
+        /* Subtle distant galaxies - small glowing clusters */
+        radial-gradient(ellipse 180px 120px at 10% 18%, rgba(160, 120, 230, 0.25) 0%, rgba(120, 90, 200, 0.1) 40%, transparent 70%),
+        radial-gradient(ellipse 120px 80px at 90% 10%, rgba(100, 160, 255, 0.2) 0%, rgba(70, 120, 220, 0.08) 40%, transparent 70%),
+        radial-gradient(ellipse 140px 90px at 82% 82%, rgba(230, 120, 190, 0.18) 0%, rgba(190, 90, 150, 0.06) 40%, transparent 70%),
+        radial-gradient(ellipse 100px 60px at 5% 88%, rgba(120, 230, 200, 0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 110px 70px at 95% 42%, rgba(210, 160, 255, 0.18) 0%, transparent 70%),
+        /* Softer nebula clouds */
+        radial-gradient(ellipse 600px 400px at 10% 30%, rgba(140, 60, 200, 0.25) 0%, rgba(100, 40, 160, 0.12) 25%, rgba(60, 20, 100, 0.05) 45%, transparent 65%),
+        radial-gradient(ellipse 550px 380px at 90% 50%, rgba(60, 120, 200, 0.22) 0%, rgba(40, 90, 170, 0.1) 25%, rgba(20, 50, 120, 0.04) 45%, transparent 65%),
+        radial-gradient(ellipse 480px 320px at 50% 10%, rgba(200, 60, 140, 0.18) 0%, rgba(160, 40, 110, 0.08) 30%, transparent 55%),
+        radial-gradient(ellipse 420px 280px at 25% 80%, rgba(80, 140, 220, 0.2) 0%, rgba(50, 100, 180, 0.08) 35%, transparent 60%),
+        radial-gradient(ellipse 380px 250px at 70% 85%, rgba(180, 100, 220, 0.15) 0%, rgba(140, 70, 180, 0.05) 35%, transparent 60%),
+        /* Subtle milky way-like band */
+        radial-gradient(ellipse 150% 20% at 50% 55%, rgba(120, 100, 180, 0.1) 0%, rgba(80, 60, 140, 0.04) 40%, transparent 70%),
+        /* Faint warm star-forming regions */
+        radial-gradient(ellipse 250px 180px at 40% 45%, rgba(255, 180, 120, 0.08) 0%, rgba(220, 140, 80, 0.03) 45%, transparent 70%),
+        radial-gradient(ellipse 200px 140px at 65% 30%, rgba(255, 200, 150, 0.06) 0%, rgba(200, 150, 100, 0.02) 50%, transparent 70%) !important;
+}
+
+/* Enhanced star field for space theme */
+[data-theme="space"] .visualization-container::before {
+    background-image:
+        /* Tiny distant stars - creates depth */
+        radial-gradient(0.5px 0.5px at 5% 8%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(0.5px 0.5px at 12% 35%, rgba(255,255,255,0.15), transparent),
+        radial-gradient(0.5px 0.5px at 18% 62%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(0.5px 0.5px at 25% 15%, rgba(255,255,255,0.15), transparent),
+        radial-gradient(0.5px 0.5px at 32% 88%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(0.5px 0.5px at 38% 42%, rgba(255,255,255,0.15), transparent),
+        radial-gradient(0.5px 0.5px at 45% 72%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(0.5px 0.5px at 52% 28%, rgba(255,255,255,0.15), transparent),
+        radial-gradient(0.5px 0.5px at 58% 95%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(0.5px 0.5px at 65% 55%, rgba(255,255,255,0.15), transparent),
+        radial-gradient(0.5px 0.5px at 72% 18%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(0.5px 0.5px at 78% 78%, rgba(255,255,255,0.15), transparent),
+        radial-gradient(0.5px 0.5px at 85% 45%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(0.5px 0.5px at 92% 68%, rgba(255,255,255,0.15), transparent),
+        /* Small stars */
+        radial-gradient(1px 1px at 10% 10%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 20% 40%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 30% 20%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 40% 60%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 50% 30%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 70% 15%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 80% 50%, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 90% 80%, rgba(255,255,255,0.4), transparent),
+        /* Medium stars */
+        radial-gradient(1.5px 1.5px at 5% 50%, rgba(200,220,255,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 22% 78%, rgba(255,230,200,0.8), transparent),
+        radial-gradient(1.5px 1.5px at 38% 12%, rgba(200,255,220,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 62% 88%, rgba(255,200,220,0.8), transparent),
+        radial-gradient(1.5px 1.5px at 78% 22%, rgba(220,200,255,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 92% 62%, rgba(200,220,255,0.8), transparent),
+        /* Bright prominent stars with glow */
+        radial-gradient(3px 3px at 8% 32%, rgba(200,220,255,1), transparent),
+        radial-gradient(3px 3px at 33% 8%, rgba(255,220,200,0.95), transparent),
+        radial-gradient(3px 3px at 67% 42%, rgba(220,200,255,1), transparent),
+        radial-gradient(3px 3px at 88% 72%, rgba(200,255,220,0.95), transparent),
+        radial-gradient(3px 3px at 42% 92%, rgba(255,200,220,1), transparent),
+        /* Star halos for brightest stars */
+        radial-gradient(8px 8px at 8% 32%, rgba(200,220,255,0.15), transparent),
+        radial-gradient(8px 8px at 67% 42%, rgba(220,200,255,0.12), transparent),
+        radial-gradient(8px 8px at 42% 92%, rgba(255,200,220,0.15), transparent) !important;
+}
+
+/* Enhanced twinkling with more stars */
+[data-theme="space"] .visualization-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(2px 2px at 12% 23%, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 45% 67%, rgba(200,220,255,0.85), transparent),
+        radial-gradient(2px 2px at 78% 34%, rgba(255,230,220,0.9), transparent),
+        radial-gradient(2px 2px at 23% 89%, rgba(220,255,230,0.85), transparent),
+        radial-gradient(2px 2px at 56% 12%, rgba(255,220,240,0.9), transparent),
+        radial-gradient(2px 2px at 89% 56%, rgba(230,220,255,0.85), transparent),
+        radial-gradient(2.5px 2.5px at 34% 45%, rgba(200,220,255,1), transparent),
+        radial-gradient(2.5px 2.5px at 67% 78%, rgba(255,220,200,1), transparent),
+        radial-gradient(2.5px 2.5px at 15% 60%, rgba(220,240,255,0.9), transparent),
+        radial-gradient(2.5px 2.5px at 82% 25%, rgba(255,210,230,0.9), transparent);
+    background-size: 100% 100%;
+    animation: space-twinkle 5s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes space-twinkle {
+    0% { opacity: 0.4; }
+    25% { opacity: 0.8; }
+    50% { opacity: 0.5; }
+    75% { opacity: 0.9; }
+    100% { opacity: 0.6; }
+}
+
+/* Add cosmic glow to hub node */
+[data-theme="space"] .node.hub-node .node-circle {
+    box-shadow:
+        0 0 40px rgba(147, 112, 219, 0.4),
+        0 0 80px rgba(100, 149, 237, 0.3),
+        0 0 120px rgba(147, 112, 219, 0.15),
+        inset 0 0 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* ========================================
+   Japanese Sakura Theme
+   ======================================== */
+[data-theme="sakura"] {
+    --space-void: #1a0a10;
+    --space-deep: #2d1a24;
+    --space-nebula-1: #3d2a34;
+    --space-nebula-2: #2a1a24;
+    --space-nebula-3: #4a3040;
+
+    --bg-secondary: #2a1a20;
+    --bg-tertiary: #3a2a30;
+    --bg-card: rgba(45, 26, 36, 0.85);
+
+    --text-primary: #fff5f7;
+    --text-secondary: #e0c0c8;
+    --text-muted: #a08090;
+
+    --color-agents: #ffb7c5;
+    --color-tools: #ff6b9d;
+    --color-commands: #ffd4e5;
+    --color-skills: #ff9eb8;
+    --color-integrations: #d4a5c9;
+    --color-config: #98d9c2;
+}
+
+[data-theme="sakura"] .visualization-container {
+    background:
+        radial-gradient(ellipse at 20% 30%, rgba(255, 183, 197, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(255, 182, 193, 0.1) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 50%, rgba(219, 112, 147, 0.08) 0%, transparent 60%),
+        linear-gradient(180deg, #1a0a10 0%, #2d1a24 50%, #1a0a10 100%) !important;
+}
+
+[data-theme="sakura"] .visualization-container::before {
+    background-image:
+        radial-gradient(1px 1px at 10% 10%, rgba(255,220,230,0.5), transparent),
+        radial-gradient(1px 1px at 25% 45%, rgba(255,200,210,0.4), transparent),
+        radial-gradient(1px 1px at 40% 20%, rgba(255,230,240,0.6), transparent),
+        radial-gradient(1px 1px at 55% 65%, rgba(255,210,220,0.4), transparent),
+        radial-gradient(1px 1px at 70% 35%, rgba(255,225,235,0.5), transparent),
+        radial-gradient(1px 1px at 85% 55%, rgba(255,215,225,0.4), transparent),
+        radial-gradient(1.5px 1.5px at 15% 75%, rgba(255,183,197,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 35% 85%, rgba(255,192,203,0.6), transparent),
+        radial-gradient(1.5px 1.5px at 65% 15%, rgba(255,182,193,0.7), transparent),
+        radial-gradient(2px 2px at 30% 50%, rgba(255,192,203,0.9), transparent),
+        radial-gradient(2px 2px at 75% 80%, rgba(255,182,193,0.8), transparent);
+}
+
+[data-theme="sakura"] .control-bar {
+    background: linear-gradient(180deg, rgba(45, 26, 36, 0.98) 0%, rgba(26, 10, 16, 0.92) 100%);
+    border-bottom-color: rgba(255, 183, 197, 0.15);
+}
+
+[data-theme="sakura"] .viz-filter-bar {
+    background: rgba(45, 26, 36, 0.85);
+    border-bottom-color: rgba(255, 183, 197, 0.1);
+}
+
+[data-theme="sakura"] .logo-icon {
+    color: #ffb7c5;
+    text-shadow: 0 0 20px rgba(255, 183, 197, 0.8), 0 0 40px rgba(255, 183, 197, 0.4);
+}
+
+[data-theme="sakura"] .node.hub-node .node-circle {
+    background: radial-gradient(circle at 30% 30%,
+        rgba(80, 50, 60, 1) 0%,
+        rgba(45, 26, 36, 1) 60%,
+        rgba(26, 10, 16, 1) 100%);
+    border-color: #ffb7c5;
+    box-shadow:
+        0 0 50px rgba(255, 183, 197, 0.5),
+        0 0 100px rgba(255, 182, 193, 0.3),
+        0 0 150px rgba(219, 112, 147, 0.2),
+        inset 0 0 40px rgba(0, 0, 0, 0.5);
+    animation: sakura-pulse 4s ease-in-out infinite;
+}
+
+@keyframes sakura-pulse {
+    0%, 100% {
+        box-shadow:
+            0 0 50px rgba(255, 183, 197, 0.5),
+            0 0 100px rgba(255, 182, 193, 0.3),
+            0 0 150px rgba(219, 112, 147, 0.2),
+            inset 0 0 40px rgba(0, 0, 0, 0.5);
+    }
+    50% {
+        box-shadow:
+            0 0 70px rgba(255, 183, 197, 0.7),
+            0 0 140px rgba(255, 182, 193, 0.4),
+            0 0 200px rgba(219, 112, 147, 0.3),
+            inset 0 0 50px rgba(0, 0, 0, 0.4);
+    }
+}
+
+[data-theme="sakura"] .node.hub-node::before {
+    background: radial-gradient(circle,
+        rgba(255, 183, 197, 0.15) 0%,
+        rgba(255, 182, 193, 0.08) 40%,
+        transparent 70%);
+}
+
+[data-theme="sakura"] .node.hub-node::after {
+    background: radial-gradient(circle,
+        rgba(255, 183, 197, 0.06) 0%,
+        rgba(219, 112, 147, 0.03) 50%,
+        transparent 70%);
+}
+
+[data-theme="sakura"] .side-panel {
+    background: linear-gradient(135deg, rgba(45, 26, 36, 0.98) 0%, rgba(26, 10, 16, 0.95) 100%);
+    border-left-color: rgba(255, 183, 197, 0.15);
+}
+
+[data-theme="sakura"] .loading-overlay {
+    background: radial-gradient(ellipse at center, rgba(45, 26, 36, 1) 0%, #1a0a10 100%);
+}
+
+[data-theme="sakura"] .loader-ring::after {
+    background: radial-gradient(circle at 30% 30%, #fff, #ffb7c5);
+    box-shadow:
+        0 0 20px #ffb7c5,
+        0 0 40px #ffb7c5,
+        0 0 60px rgba(255, 183, 197, 0.3);
+}
+
+[data-theme="sakura"] .loader-ring .loader-sun {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 200, 210, 0.9), rgba(255, 150, 180, 0.8));
+    box-shadow:
+        0 0 30px rgba(255, 183, 197, 0.6),
+        0 0 60px rgba(255, 150, 180, 0.3);
+}
+
+/* Sakura Theme - Soft, authentic Japanese cherry blossom aesthetic */
+[data-theme="sakura"] .node .node-circle {
+    background: radial-gradient(circle at 30% 30%,
+        rgba(255, 250, 251, 1) 0%,
+        rgba(255, 243, 245, 1) 50%,
+        rgba(252, 235, 238, 1) 100%) !important;
+    border-color: #e8a0b0 !important;
+    border-width: 2px;
+    box-shadow:
+        0 0 20px rgba(232, 160, 176, 0.35),
+        0 0 40px rgba(232, 180, 190, 0.2),
+        inset 0 0 15px rgba(255, 220, 225, 0.4) !important;
+}
+
+[data-theme="sakura"] .node .node-circle svg {
+    stroke: #8b4557 !important;
+    filter: none !important;
+}
+
+[data-theme="sakura"] .node .node-label {
+    color: #f5e8eb !important;
+    text-shadow: 0 0 8px rgba(30, 15, 20, 0.9), 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+[data-theme="sakura"] .node:hover .node-circle {
+    border-color: #d4919e !important;
+    box-shadow:
+        0 0 30px rgba(212, 145, 158, 0.5),
+        0 0 60px rgba(232, 180, 190, 0.3),
+        inset 0 0 20px rgba(255, 225, 230, 0.5) !important;
+}
+
+[data-theme="sakura"] .node:hover .node-circle svg {
+    stroke: #6b3545 !important;
+}
+
+[data-theme="sakura"] .node:hover .node-label {
+    color: #ffffff !important;
+}
+
+/* Sakura hub node - warm cream with delicate pink */
+[data-theme="sakura"] .node.hub-node .node-circle {
+    background: radial-gradient(circle at 30% 30%,
+        rgba(255, 252, 253, 1) 0%,
+        rgba(255, 245, 247, 1) 40%,
+        rgba(250, 235, 240, 1) 100%) !important;
+    border-color: #d4919e !important;
+    border-width: 3px;
+    box-shadow:
+        0 0 40px rgba(212, 145, 158, 0.4),
+        0 0 80px rgba(232, 180, 190, 0.25),
+        0 0 120px rgba(240, 200, 210, 0.15),
+        inset 0 0 30px rgba(255, 225, 235, 0.3) !important;
+}
+
+[data-theme="sakura"] .node.hub-node .node-circle svg {
+    stroke: #7a4050 !important;
+}
+
+[data-theme="sakura"] .node.hub-node .node-label {
+    color: #fff0f3 !important;
+    text-shadow: 0 0 12px rgba(20, 10, 15, 0.9), 0 0 25px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Override category-specific node colors for sakura - soft palette */
+[data-theme="sakura"] .node[data-category="agents"],
+[data-theme="sakura"] .node[data-category="tools"],
+[data-theme="sakura"] .node[data-category="commands"],
+[data-theme="sakura"] .node[data-category="skills"],
+[data-theme="sakura"] .node[data-category="integrations"],
+[data-theme="sakura"] .node[data-category="config"] {
+    --node-color: #e8a0b0;
+    --node-glow: rgba(232, 160, 176, 0.35);
+}
+
+/* ========================================
+   Cyberpunk Theme
+   ======================================== */
+[data-theme="cyberpunk"] {
+    --space-void: #0a0a0a;
+    --space-deep: #1a0a2e;
+    --space-nebula-1: #2d0a4e;
+    --space-nebula-2: #1a1a3e;
+    --space-nebula-3: #3d1a5e;
+
+    --bg-secondary: #1a1a2e;
+    --bg-tertiary: #2a2a4e;
+    --bg-card: rgba(26, 26, 46, 0.85);
+
+    --text-primary: #f0f0ff;
+    --text-secondary: #a0a0d0;
+    --text-muted: #606090;
+
+    --color-agents: #00ffff;
+    --color-tools: #ff00ff;
+    --color-commands: #ffff00;
+    --color-skills: #ff6600;
+    --color-integrations: #ff0066;
+    --color-config: #00ff66;
+}
+
+[data-theme="cyberpunk"] .visualization-container {
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(255, 0, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 50%, rgba(255, 255, 0, 0.05) 0%, transparent 60%),
+        linear-gradient(180deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%) !important;
+}
+
+[data-theme="cyberpunk"] .control-bar {
+    background: linear-gradient(180deg, rgba(26, 10, 46, 0.98) 0%, rgba(10, 10, 10, 0.92) 100%);
+    border-bottom: 1px solid rgba(255, 0, 255, 0.2);
+}
+
+[data-theme="cyberpunk"] .viz-filter-bar {
+    background: rgba(26, 10, 46, 0.85);
+    border-bottom-color: rgba(255, 0, 255, 0.1);
+}
+
+[data-theme="cyberpunk"] .logo-icon {
+    color: #ff00ff;
+    text-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.4);
+    animation: cyber-pulse 2s ease-in-out infinite;
+}
+
+@keyframes cyber-pulse {
+    0%, 100% { color: #ff00ff; }
+    50% { color: #00ffff; }
+}
+
+[data-theme="cyberpunk"] .node.hub-node .node-circle {
+    border-color: #ff00ff;
+    box-shadow:
+        0 0 50px rgba(255, 0, 255, 0.6),
+        0 0 100px rgba(0, 255, 255, 0.3),
+        inset 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Scan line effect */
+[data-theme="cyberpunk"] .visualization-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.1) 2px,
+        rgba(0, 0, 0, 0.1) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ========================================
+   Enchanted Forest Theme
+   ======================================== */
+[data-theme="forest"] {
+    --space-void: #0a1f0a;
+    --space-deep: #0f2a0f;
+    --space-nebula-1: #1a3a1a;
+    --space-nebula-2: #0f3a2a;
+    --space-nebula-3: #2a4a2a;
+
+    --bg-secondary: #0f2a1a;
+    --bg-tertiary: #1a3a2a;
+    --bg-card: rgba(15, 42, 26, 0.85);
+
+    --text-primary: #e8f5e8;
+    --text-secondary: #a0c8a0;
+    --text-muted: #608060;
+
+    --color-agents: #7fff7f;
+    --color-tools: #ff9966;
+    --color-commands: #ffff66;
+    --color-skills: #66ffcc;
+    --color-integrations: #cc99ff;
+    --color-config: #99ff99;
+}
+
+[data-theme="forest"] .visualization-container {
+    background:
+        radial-gradient(ellipse at 30% 70%, rgba(100, 200, 100, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(150, 255, 150, 0.08) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 50%, rgba(50, 100, 50, 0.15) 0%, transparent 60%),
+        linear-gradient(180deg, #0a1f0a 0%, #0f2a0f 50%, #0a1f0a 100%) !important;
+}
+
+[data-theme="forest"] .control-bar {
+    background: linear-gradient(180deg, rgba(15, 42, 15, 0.98) 0%, rgba(10, 31, 10, 0.92) 100%);
+    border-bottom-color: rgba(100, 200, 100, 0.15);
+}
+
+[data-theme="forest"] .viz-filter-bar {
+    background: rgba(15, 42, 15, 0.85);
+    border-bottom-color: rgba(100, 200, 100, 0.1);
+}
+
+[data-theme="forest"] .logo-icon {
+    color: #7fff7f;
+    text-shadow: 0 0 20px rgba(127, 255, 127, 0.8), 0 0 40px rgba(100, 200, 100, 0.4);
+}
+
+[data-theme="forest"] .node.hub-node .node-circle {
+    background: radial-gradient(circle at 30% 30%,
+        rgba(30, 60, 30, 1) 0%,
+        rgba(15, 42, 15, 1) 60%,
+        rgba(10, 31, 10, 1) 100%);
+    border-color: #7fff7f;
+    box-shadow:
+        0 0 50px rgba(127, 255, 127, 0.5),
+        0 0 100px rgba(100, 200, 100, 0.3),
+        0 0 150px rgba(50, 150, 50, 0.2),
+        inset 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="forest"] .side-panel {
+    background: linear-gradient(135deg, rgba(15, 42, 26, 0.98) 0%, rgba(10, 31, 10, 0.95) 100%);
+    border-left-color: rgba(100, 200, 100, 0.15);
+}
+
+/* ========================================
+   Deep Ocean Theme
+   ======================================== */
+[data-theme="ocean"] {
+    --space-void: #001020;
+    --space-deep: #002040;
+    --space-nebula-1: #003060;
+    --space-nebula-2: #002050;
+    --space-nebula-3: #004080;
+
+    --bg-secondary: #001530;
+    --bg-tertiary: #002550;
+    --bg-card: rgba(0, 32, 64, 0.85);
+
+    --text-primary: #e0f0ff;
+    --text-secondary: #80b0d0;
+    --text-muted: #406080;
+
+    --color-agents: #00d4ff;
+    --color-tools: #ff6699;
+    --color-commands: #ffcc00;
+    --color-skills: #00ffcc;
+    --color-integrations: #9999ff;
+    --color-config: #66ffcc;
+}
+
+[data-theme="ocean"] .visualization-container {
+    background:
+        radial-gradient(ellipse at 50% 100%, rgba(0, 100, 200, 0.2) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 50%, rgba(0, 150, 255, 0.1) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 30%, rgba(0, 200, 255, 0.08) 0%, transparent 50%),
+        linear-gradient(180deg, #001020 0%, #002040 50%, #003060 100%) !important;
+}
+
+[data-theme="ocean"] .control-bar {
+    background: linear-gradient(180deg, rgba(0, 32, 64, 0.98) 0%, rgba(0, 16, 32, 0.92) 100%);
+    border-bottom-color: rgba(0, 150, 255, 0.15);
+}
+
+[data-theme="ocean"] .viz-filter-bar {
+    background: rgba(0, 32, 64, 0.85);
+    border-bottom-color: rgba(0, 150, 255, 0.1);
+}
+
+[data-theme="ocean"] .logo-icon {
+    color: #00d4ff;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 150, 200, 0.4);
+}
+
+[data-theme="ocean"] .node.hub-node .node-circle {
+    background: radial-gradient(circle at 30% 30%,
+        rgba(0, 50, 80, 1) 0%,
+        rgba(0, 32, 64, 1) 60%,
+        rgba(0, 16, 32, 1) 100%);
+    border-color: #00d4ff;
+    box-shadow:
+        0 0 50px rgba(0, 212, 255, 0.5),
+        0 0 100px rgba(0, 150, 200, 0.3),
+        0 0 150px rgba(0, 100, 150, 0.2),
+        inset 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="ocean"] .side-panel {
+    background: linear-gradient(135deg, rgba(0, 32, 64, 0.98) 0%, rgba(0, 16, 32, 0.95) 100%);
+    border-left-color: rgba(0, 150, 255, 0.15);
+}
+
+/* Caustics effect for ocean */
+[data-theme="ocean"] .visualization-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 30% 40%, rgba(100, 200, 255, 0.03) 0%, transparent 30%),
+        radial-gradient(ellipse at 70% 60%, rgba(100, 200, 255, 0.03) 0%, transparent 30%),
+        radial-gradient(ellipse at 50% 80%, rgba(100, 200, 255, 0.03) 0%, transparent 30%);
+    animation: caustics 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes caustics {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+[data-theme="ocean"] .loading-overlay {
+    background: radial-gradient(ellipse at center, rgba(0, 32, 64, 1) 0%, #001020 100%);
+}
+
+[data-theme="ocean"] .loader-ring::after {
+    background: radial-gradient(circle at 30% 30%, #fff, #00d4ff);
+    box-shadow:
+        0 0 20px #00d4ff,
+        0 0 40px #00d4ff,
+        0 0 60px rgba(0, 212, 255, 0.3);
+}
+
+[data-theme="ocean"] .loader-ring .loader-sun {
+    background: radial-gradient(circle at 30% 30%, rgba(100, 200, 255, 0.9), rgba(0, 150, 200, 0.8));
+    box-shadow:
+        0 0 30px rgba(0, 200, 255, 0.6),
+        0 0 60px rgba(0, 150, 200, 0.3);
+}
+
+/* ========================================
+   Retro Terminal Theme
+   ======================================== */
+[data-theme="terminal"] {
+    --space-void: #0a0a0a;
+    --space-deep: #0d1a0d;
+    --space-nebula-1: #0a1f0a;
+    --space-nebula-2: #051005;
+    --space-nebula-3: #0f2a0f;
+
+    --bg-secondary: #0a150a;
+    --bg-tertiary: #0f1f0f;
+    --bg-card: rgba(10, 25, 10, 0.9);
+
+    --text-primary: #33ff33;
+    --text-secondary: #22cc22;
+    --text-muted: #117711;
+
+    --color-agents: #33ff33;
+    --color-tools: #33ff33;
+    --color-commands: #33ff33;
+    --color-skills: #33ff33;
+    --color-integrations: #33ff33;
+    --color-config: #33ff33;
+}
+
+[data-theme="terminal"] .visualization-container {
+    background: #0a0a0a !important;
+}
+
+[data-theme="terminal"] .visualization-container::before {
+    background-image: none !important;
+}
+
+[data-theme="terminal"] .visualization-container::after {
+    display: none;
+}
+
+[data-theme="terminal"] .control-bar {
+    background: linear-gradient(180deg, rgba(10, 20, 10, 0.98) 0%, rgba(5, 10, 5, 0.95) 100%);
+    border-bottom: 1px solid rgba(51, 255, 51, 0.2);
+}
+
+[data-theme="terminal"] .viz-filter-bar {
+    background: rgba(10, 20, 10, 0.9);
+    border-bottom-color: rgba(51, 255, 51, 0.15);
+}
+
+[data-theme="terminal"] .logo-icon {
+    color: #33ff33;
+    text-shadow: 0 0 10px #33ff33, 0 0 20px #33ff33, 0 0 30px #33ff33;
+    animation: terminal-glow 2s ease-in-out infinite;
+}
+
+@keyframes terminal-glow {
+    0%, 100% { text-shadow: 0 0 5px #33ff33, 0 0 10px #33ff33, 0 0 15px #33ff33; }
+    50% { text-shadow: 0 0 10px #33ff33, 0 0 20px #33ff33, 0 0 30px #33ff33, 0 0 40px #33ff33; }
+}
+
+/* Terminal nodes - phosphor green on black */
+[data-theme="terminal"] .node .node-circle {
+    background: radial-gradient(circle at 50% 50%,
+        rgba(15, 25, 15, 1) 0%,
+        rgba(10, 15, 10, 1) 70%,
+        rgba(5, 10, 5, 1) 100%) !important;
+    border: 2px solid #33ff33 !important;
+    box-shadow:
+        0 0 10px rgba(51, 255, 51, 0.5),
+        0 0 20px rgba(51, 255, 51, 0.3),
+        inset 0 0 15px rgba(51, 255, 51, 0.1) !important;
+}
+
+[data-theme="terminal"] .node .node-circle svg {
+    stroke: #33ff33 !important;
+    filter: drop-shadow(0 0 3px #33ff33) !important;
+}
+
+[data-theme="terminal"] .node .node-label {
+    color: #33ff33 !important;
+    text-shadow: 0 0 5px #33ff33, 0 0 10px rgba(51, 255, 51, 0.5) !important;
+    font-family: 'JetBrains Mono', monospace !important;
+}
+
+[data-theme="terminal"] .node:hover .node-circle {
+    box-shadow:
+        0 0 15px rgba(51, 255, 51, 0.7),
+        0 0 30px rgba(51, 255, 51, 0.5),
+        0 0 45px rgba(51, 255, 51, 0.3),
+        inset 0 0 20px rgba(51, 255, 51, 0.15) !important;
+}
+
+[data-theme="terminal"] .node.hub-node .node-circle {
+    background: radial-gradient(circle at 50% 50%,
+        rgba(20, 35, 20, 1) 0%,
+        rgba(10, 20, 10, 1) 70%,
+        rgba(5, 10, 5, 1) 100%) !important;
+    border: 3px solid #33ff33 !important;
+    box-shadow:
+        0 0 20px rgba(51, 255, 51, 0.6),
+        0 0 40px rgba(51, 255, 51, 0.4),
+        0 0 60px rgba(51, 255, 51, 0.2),
+        inset 0 0 30px rgba(51, 255, 51, 0.1) !important;
+}
+
+[data-theme="terminal"] .side-panel {
+    background: linear-gradient(135deg, rgba(10, 20, 10, 0.98) 0%, rgba(5, 10, 5, 0.95) 100%);
+    border-left: 1px solid rgba(51, 255, 51, 0.2);
+}
+
+[data-theme="terminal"] .filter-btn {
+    border-color: rgba(51, 255, 51, 0.3);
+    color: #22cc22;
+}
+
+[data-theme="terminal"] .filter-btn.active {
+    border-color: #33ff33;
+    color: #33ff33;
+    background: rgba(51, 255, 51, 0.1);
+    box-shadow: 0 0 15px rgba(51, 255, 51, 0.3);
+}
+
+[data-theme="terminal"] .loading-overlay {
+    background: #0a0a0a;
+}
+
+[data-theme="terminal"] .loader-ring::after {
+    background: #33ff33;
+    box-shadow: 0 0 20px #33ff33, 0 0 40px #33ff33;
+}
+
+[data-theme="terminal"] .loader-ring .loader-sun {
+    background: radial-gradient(circle at 50% 50%, #33ff33, #117711);
+    box-shadow: 0 0 30px #33ff33, 0 0 60px rgba(51, 255, 51, 0.5);
+}
+
+[data-theme="terminal"] .loader span {
+    color: #33ff33;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ========================================
+   Aurora Borealis Theme
+   ======================================== */
+[data-theme="aurora"] {
+    --space-void: #0a0a1a;
+    --space-deep: #101025;
+    --space-nebula-1: #1a2a3a;
+    --space-nebula-2: #152535;
+    --space-nebula-3: #1a3a2a;
+
+    --bg-secondary: #0f1520;
+    --bg-tertiary: #152030;
+    --bg-card: rgba(15, 25, 40, 0.85);
+
+    --text-primary: #e0f0ff;
+    --text-secondary: #a0d0c0;
+    --text-muted: #607070;
+
+    --color-agents: #00ffa0;
+    --color-tools: #ff6090;
+    --color-commands: #a0ff60;
+    --color-skills: #60d0ff;
+    --color-integrations: #c080ff;
+    --color-config: #80ffb0;
+}
+
+[data-theme="aurora"] .visualization-container {
+    background:
+        radial-gradient(ellipse at 30% 0%, rgba(0, 255, 160, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 10%, rgba(100, 150, 255, 0.06) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 20%, rgba(150, 100, 255, 0.05) 0%, transparent 45%),
+        linear-gradient(180deg, #0a0a1a 0%, #101025 40%, #0a0a1a 100%) !important;
+}
+
+[data-theme="aurora"] .visualization-container::before {
+    background-image:
+        radial-gradient(1px 1px at 10% 20%, rgba(200, 255, 220, 0.6), transparent),
+        radial-gradient(1px 1px at 30% 10%, rgba(180, 220, 255, 0.5), transparent),
+        radial-gradient(1px 1px at 50% 30%, rgba(220, 200, 255, 0.6), transparent),
+        radial-gradient(1px 1px at 70% 15%, rgba(200, 255, 200, 0.5), transparent),
+        radial-gradient(1px 1px at 90% 25%, rgba(180, 200, 255, 0.6), transparent),
+        radial-gradient(1.5px 1.5px at 20% 40%, rgba(150, 255, 200, 0.7), transparent),
+        radial-gradient(1.5px 1.5px at 60% 35%, rgba(200, 180, 255, 0.6), transparent),
+        radial-gradient(2px 2px at 40% 5%, rgba(180, 255, 220, 0.8), transparent),
+        radial-gradient(2px 2px at 80% 45%, rgba(220, 200, 255, 0.7), transparent);
+}
+
+[data-theme="aurora"] .control-bar {
+    background: linear-gradient(180deg, rgba(15, 20, 35, 0.98) 0%, rgba(10, 15, 25, 0.95) 100%);
+    border-bottom: 1px solid rgba(100, 255, 180, 0.15);
+}
+
+[data-theme="aurora"] .viz-filter-bar {
+    background: rgba(15, 20, 35, 0.9);
+    border-bottom-color: rgba(100, 255, 180, 0.1);
+}
+
+[data-theme="aurora"] .logo-icon {
+    color: #00ffa0;
+    text-shadow: 0 0 15px #00ffa0, 0 0 30px rgba(100, 200, 255, 0.5);
+    animation: aurora-logo 4s ease-in-out infinite;
+}
+
+@keyframes aurora-logo {
+    0%, 100% { color: #00ffa0; text-shadow: 0 0 15px #00ffa0, 0 0 30px rgba(100, 200, 255, 0.5); }
+    33% { color: #60d0ff; text-shadow: 0 0 15px #60d0ff, 0 0 30px rgba(150, 100, 255, 0.5); }
+    66% { color: #c080ff; text-shadow: 0 0 15px #c080ff, 0 0 30px rgba(0, 255, 160, 0.5); }
+}
+
+/* Aurora nodes - gradient borders that shift */
+[data-theme="aurora"] .node .node-circle {
+    background: radial-gradient(circle at 30% 30%,
+        rgba(25, 35, 50, 1) 0%,
+        rgba(15, 25, 40, 1) 60%,
+        rgba(10, 15, 25, 1) 100%) !important;
+    border: 2px solid !important;
+    border-image: linear-gradient(135deg, #00ffa0, #60d0ff, #c080ff) 1 !important;
+    box-shadow:
+        0 0 15px rgba(0, 255, 160, 0.3),
+        0 0 30px rgba(100, 200, 255, 0.2),
+        inset 0 0 15px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="aurora"] .node .node-circle svg {
+    stroke: #a0ffcc !important;
+    filter: drop-shadow(0 0 3px rgba(160, 255, 200, 0.6)) !important;
+}
+
+[data-theme="aurora"] .node .node-label {
+    color: #c0f0e0 !important;
+    text-shadow: 0 0 8px rgba(0, 255, 160, 0.5), 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+[data-theme="aurora"] .node:hover .node-circle {
+    box-shadow:
+        0 0 25px rgba(0, 255, 160, 0.5),
+        0 0 50px rgba(100, 200, 255, 0.3),
+        0 0 75px rgba(150, 100, 255, 0.2),
+        inset 0 0 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="aurora"] .node.hub-node .node-circle {
+    background: radial-gradient(circle at 30% 30%,
+        rgba(30, 45, 60, 1) 0%,
+        rgba(20, 30, 45, 1) 50%,
+        rgba(10, 20, 30, 1) 100%) !important;
+    border-width: 3px !important;
+    box-shadow:
+        0 0 30px rgba(0, 255, 160, 0.4),
+        0 0 60px rgba(100, 200, 255, 0.3),
+        0 0 90px rgba(150, 100, 255, 0.2),
+        inset 0 0 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="aurora"] .node.hub-node .node-label {
+    color: #a0ffcc !important;
+    text-shadow: 0 0 15px rgba(0, 255, 160, 0.6), 0 0 30px rgba(100, 200, 255, 0.3) !important;
+}
+
+[data-theme="aurora"] .side-panel {
+    background: linear-gradient(135deg, rgba(15, 25, 40, 0.98) 0%, rgba(10, 15, 25, 0.95) 100%);
+    border-left: 1px solid rgba(100, 255, 180, 0.15);
+}
+
+[data-theme="aurora"] .filter-btn.active {
+    border-color: #00ffa0;
+    color: #00ffa0;
+    background: rgba(0, 255, 160, 0.1);
+    box-shadow: 0 0 15px rgba(0, 255, 160, 0.3);
+}
+
+[data-theme="aurora"] .loading-overlay {
+    background: radial-gradient(ellipse at center, rgba(15, 25, 40, 1) 0%, #0a0a1a 100%);
+}
+
+[data-theme="aurora"] .loader-ring::after {
+    background: radial-gradient(circle at 30% 30%, #fff, #00ffa0);
+    box-shadow: 0 0 20px #00ffa0, 0 0 40px #60d0ff, 0 0 60px rgba(150, 100, 255, 0.3);
+}
+
+[data-theme="aurora"] .loader-ring .loader-sun {
+    background: radial-gradient(circle at 30% 30%, rgba(160, 255, 200, 0.9), rgba(100, 200, 255, 0.8));
+    box-shadow: 0 0 30px rgba(0, 255, 160, 0.6), 0 0 60px rgba(100, 200, 255, 0.3);
+}
+
+/* ========================================
+   Midnight Garden Theme
+   ======================================== */
+[data-theme="midnight-garden"] {
+    --space-void: #0a0a1a;
+    --space-deep: #1a102a;
+    --space-nebula-1: #2a1a3a;
+    --space-nebula-2: #1a0a2a;
+    --space-nebula-3: #3a2a4a;
+
+    --bg-secondary: #1a1025;
+    --bg-tertiary: #2a1a35;
+    --bg-card: rgba(26, 16, 42, 0.9);
+
+    --text-primary: #f0e8ff;
+    --text-secondary: #b0a0d0;
+    --text-muted: #706080;
+
+    --color-agents: #ff80c0;
+    --color-tools: #80d0ff;
+    --color-commands: #c0ff80;
+    --color-skills: #ffc080;
+    --color-integrations: #c080ff;
+    --color-config: #80ffc0;
+}
+
+[data-theme="midnight-garden"] .visualization-container {
+    background:
+        radial-gradient(ellipse at 85% 10%, rgba(200, 180, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(ellipse at 20% 80%, rgba(255, 150, 200, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 60% 60%, rgba(150, 100, 180, 0.08) 0%, transparent 60%),
+        linear-gradient(180deg, #0a0a1a 0%, #1a102a 40%, #2a1a3a 100%) !important;
+}
+
+[data-theme="midnight-garden"] .control-bar {
+    background: linear-gradient(180deg, rgba(26, 16, 42, 0.98) 0%, rgba(10, 10, 26, 0.92) 100%);
+    border-bottom-color: rgba(200, 150, 255, 0.15);
+}
+
+[data-theme="midnight-garden"] .viz-filter-bar {
+    background: rgba(26, 16, 42, 0.85);
+    border-bottom-color: rgba(200, 150, 255, 0.1);
+}
+
+[data-theme="midnight-garden"] .logo-icon {
+    color: #ff80c0;
+    text-shadow: 0 0 20px rgba(255, 128, 192, 0.8), 0 0 40px rgba(180, 100, 255, 0.4);
+}
+
+[data-theme="midnight-garden"] .node.hub-node .node-circle {
+    background: radial-gradient(circle at 30% 30%,
+        rgba(40, 25, 55, 1) 0%,
+        rgba(26, 16, 42, 1) 60%,
+        rgba(15, 10, 25, 1) 100%);
+    border-color: #c080ff;
+    box-shadow:
+        0 0 50px rgba(192, 128, 255, 0.5),
+        0 0 100px rgba(255, 128, 192, 0.3),
+        inset 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="midnight-garden"] #nebula-layer {
+    background:
+        radial-gradient(ellipse 300px 200px at 85% 15%, rgba(180, 160, 230, 0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 250px 180px at 15% 85%, rgba(255, 120, 180, 0.12) 0%, transparent 70%) !important;
+    opacity: 1 !important;
+}
+
+/* ========================================
+   Arctic Ice Theme
+   ======================================== */
+[data-theme="arctic"] {
+    --space-void: #d0e8f0;
+    --space-deep: #b8d8e8;
+    --space-nebula-1: #a0c8d8;
+    --space-nebula-2: #c8e0f0;
+    --space-nebula-3: #90b8c8;
+
+    --bg-secondary: #c8dce8;
+    --bg-tertiary: #b0d0e0;
+    --bg-card: rgba(200, 220, 232, 0.9);
+
+    --text-primary: #1a3040;
+    --text-secondary: #406080;
+    --text-muted: #6090b0;
+
+    --color-agents: #0080c0;
+    --color-tools: #c04080;
+    --color-commands: #40a060;
+    --color-skills: #c08000;
+    --color-integrations: #8040c0;
+    --color-config: #00a080;
+}
+
+[data-theme="arctic"] .visualization-container {
+    background:
+        radial-gradient(ellipse at 30% 20%, rgba(200, 230, 255, 0.5) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(180, 210, 240, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(220, 240, 255, 0.3) 0%, transparent 60%),
+        linear-gradient(180deg, #e8f4f8 0%, #c8dce8 40%, #a8c8d8 100%) !important;
+}
+
+[data-theme="arctic"] .control-bar {
+    background: linear-gradient(180deg, rgba(220, 235, 245, 0.98) 0%, rgba(200, 220, 232, 0.92) 100%);
+    border-bottom-color: rgba(100, 150, 180, 0.2);
+}
+
+[data-theme="arctic"] .viz-filter-bar {
+    background: rgba(200, 220, 235, 0.9);
+    border-bottom-color: rgba(100, 150, 180, 0.15);
+}
+
+[data-theme="arctic"] .logo-icon {
+    color: #0080c0;
+    text-shadow: 0 0 20px rgba(0, 128, 192, 0.6), 0 0 40px rgba(100, 180, 220, 0.3);
+}
+
+[data-theme="arctic"] .logo-text,
+[data-theme="arctic"] .logo-subtitle {
+    color: #2a4050;
+}
+
+[data-theme="arctic"] .nav-link {
+    color: #406080;
+}
+
+[data-theme="arctic"] .nav-link:hover,
+[data-theme="arctic"] .nav-link.active {
+    color: #0080c0;
+    background: rgba(0, 128, 192, 0.1);
+}
+
+[data-theme="arctic"] .theme-btn {
+    color: #406080;
+    background: rgba(0, 80, 120, 0.08);
+    border-color: rgba(0, 80, 120, 0.15);
+}
+
+[data-theme="arctic"] .theme-btn:hover {
+    background: rgba(0, 80, 120, 0.15);
+    color: #1a3040;
+}
+
+[data-theme="arctic"] .node .node-circle {
+    background: radial-gradient(circle at 30% 30%,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(230, 245, 250, 0.9) 60%,
+        rgba(200, 225, 240, 0.85) 100%) !important;
+    border-width: 2px !important;
+}
+
+[data-theme="arctic"] .node .node-circle svg {
+    stroke: #2a4050 !important;
+}
+
+[data-theme="arctic"] .node .node-label {
+    color: #1a3040 !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="arctic"] .node.hub-node .node-circle {
+    background: radial-gradient(circle at 30% 30%,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(220, 240, 250, 1) 60%,
+        rgba(180, 215, 235, 1) 100%) !important;
+    border-color: #0080c0 !important;
+    box-shadow:
+        0 0 50px rgba(0, 128, 192, 0.4),
+        0 0 100px rgba(100, 180, 220, 0.2),
+        inset 0 0 40px rgba(255, 255, 255, 0.5) !important;
+}
+
+[data-theme="arctic"] .filter-btn {
+    color: #406080;
+    border-color: rgba(64, 96, 128, 0.3);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="arctic"] .filter-btn:hover {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 128, 192, 0.4);
+    color: #0080c0;
+}
+
+[data-theme="arctic"] .filter-btn.active {
+    background: rgba(0, 128, 192, 0.15);
+    border-color: #0080c0;
+    color: #0080c0;
+}
+
+[data-theme="arctic"] #nebula-layer {
+    background:
+        radial-gradient(ellipse 400px 300px at 20% 30%, rgba(180, 220, 255, 0.3) 0%, transparent 70%),
+        radial-gradient(ellipse 350px 250px at 80% 70%, rgba(200, 230, 255, 0.25) 0%, transparent 70%) !important;
+    opacity: 1 !important;
+}
+
+/* ========================================
+   Vintage Sepia Theme
+   ======================================== */
+[data-theme="sepia"] {
+    --space-void: #f5e6d3;
+    --space-deep: #e8d4bc;
+    --space-nebula-1: #d4c4a8;
+    --space-nebula-2: #e0d0b8;
+    --space-nebula-3: #c8b898;
+
+    --bg-secondary: #e0d0bc;
+    --bg-tertiary: #d0c0a8;
+    --bg-card: rgba(224, 208, 188, 0.9);
+
+    --text-primary: #3a2a1a;
+    --text-secondary: #5a4a3a;
+    --text-muted: #8a7a6a;
+
+    --color-agents: #8b4513;
+    --color-tools: #a0522d;
+    --color-commands: #6b8e23;
+    --color-skills: #b8860b;
+    --color-integrations: #8b0000;
+    --color-config: #2f4f4f;
+}
+
+[data-theme="sepia"] .visualization-container {
+    background:
+        radial-gradient(ellipse at 50% 50%, rgba(245, 230, 211, 0.8) 0%, transparent 70%),
+        radial-gradient(ellipse at 20% 30%, rgba(200, 180, 150, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(180, 160, 130, 0.3) 0%, transparent 50%),
+        linear-gradient(180deg, #f5e6d3 0%, #e8d4bc 40%, #d4c4a8 100%) !important;
+}
+
+[data-theme="sepia"] .control-bar {
+    background: linear-gradient(180deg, rgba(240, 225, 205, 0.98) 0%, rgba(224, 208, 188, 0.92) 100%);
+    border-bottom-color: rgba(100, 80, 60, 0.2);
+}
+
+[data-theme="sepia"] .viz-filter-bar {
+    background: rgba(232, 216, 196, 0.9);
+    border-bottom-color: rgba(100, 80, 60, 0.15);
+}
+
+[data-theme="sepia"] .logo-icon {
+    color: #8b4513;
+    text-shadow: 0 0 15px rgba(139, 69, 19, 0.5);
+}
+
+[data-theme="sepia"] .logo-text,
+[data-theme="sepia"] .logo-subtitle {
+    color: #3a2a1a;
+}
+
+[data-theme="sepia"] .nav-link {
+    color: #5a4a3a;
+}
+
+[data-theme="sepia"] .nav-link:hover,
+[data-theme="sepia"] .nav-link.active {
+    color: #8b4513;
+    background: rgba(139, 69, 19, 0.1);
+}
+
+[data-theme="sepia"] .theme-btn {
+    color: #5a4a3a;
+    background: rgba(139, 69, 19, 0.08);
+    border-color: rgba(139, 69, 19, 0.2);
+}
+
+[data-theme="sepia"] .theme-btn:hover {
+    background: rgba(139, 69, 19, 0.15);
+    color: #3a2a1a;
+}
+
+[data-theme="sepia"] .node .node-circle {
+    background: radial-gradient(circle at 30% 30%,
+        rgba(255, 250, 240, 0.95) 0%,
+        rgba(245, 235, 220, 0.9) 60%,
+        rgba(230, 215, 195, 0.85) 100%) !important;
+    border-width: 2px !important;
+    border-color: #a08060 !important;
+}
+
+[data-theme="sepia"] .node .node-circle svg {
+    stroke: #5a4030 !important;
+}
+
+[data-theme="sepia"] .node .node-label {
+    color: #3a2a1a !important;
+    text-shadow: 0 1px 2px rgba(255, 250, 240, 0.8);
+}
+
+[data-theme="sepia"] .node.hub-node .node-circle {
+    background: radial-gradient(circle at 30% 30%,
+        rgba(255, 250, 235, 1) 0%,
+        rgba(240, 225, 200, 1) 60%,
+        rgba(220, 200, 170, 1) 100%) !important;
+    border-color: #8b4513 !important;
+    box-shadow:
+        0 0 40px rgba(139, 69, 19, 0.3),
+        0 0 80px rgba(180, 140, 100, 0.2),
+        inset 0 0 30px rgba(255, 250, 240, 0.5) !important;
+}
+
+[data-theme="sepia"] .filter-btn {
+    color: #5a4a3a;
+    border-color: rgba(90, 74, 58, 0.3);
+    background: rgba(255, 250, 240, 0.6);
+}
+
+[data-theme="sepia"] .filter-btn:hover {
+    background: rgba(255, 250, 240, 0.9);
+    border-color: rgba(139, 69, 19, 0.4);
+    color: #8b4513;
+}
+
+[data-theme="sepia"] .filter-btn.active {
+    background: rgba(139, 69, 19, 0.15);
+    border-color: #8b4513;
+    color: #8b4513;
+}
+
+[data-theme="sepia"] #nebula-layer {
+    background:
+        radial-gradient(ellipse 400px 300px at 30% 40%, rgba(180, 160, 130, 0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 350px 250px at 70% 60%, rgba(160, 140, 110, 0.12) 0%, transparent 70%) !important;
+    opacity: 1 !important;
+}

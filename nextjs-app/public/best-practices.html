@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code Best Practices - Getting Started Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=3">
+    <link rel="stylesheet" href="/themes.css?v=3">
+    <link rel="stylesheet" href="/best-practices.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="control-bar">
+        <div class="logo">
+            <span class="logo-icon">◈</span>
+            <span class="logo-text">Claude Code</span>
+            <span class="logo-subtitle">Best Practices</span>
+        </div>
+
+        <nav class="page-nav">
+            <a href="/" class="nav-link">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="9"/>
+                    <circle cx="12" cy="12" r="4"/>
+                </svg>
+                Visualizer
+            </a>
+            <a href="/combos" class="nav-link">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+                Combos
+            </a>
+            <a href="/best-practices" class="nav-link active">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+                Best Practices
+            </a>
+        </nav>
+
+        <!-- Theme switcher will be injected here -->
+    </header>
+
+    <!-- Main Content -->
+    <main class="bp-container">
+        <div class="bp-hero">
+            <h1>Getting Started with Claude Code</h1>
+            <p>Best practices, essential plugins, and tips for maximizing your productivity with Claude Code on new projects.</p>
+        </div>
+
+        <!-- Quick Start Section -->
+        <section class="bp-section">
+            <div class="bp-section-header">
+                <span class="bp-section-icon">🚀</span>
+                <h2>Quick Start Checklist</h2>
+            </div>
+            <div class="bp-checklist">
+                <div class="bp-check-item">
+                    <span class="check-number">1</span>
+                    <div class="check-content">
+                        <h3>Initialize Your Project Context</h3>
+                        <p>Create a <code>CLAUDE.md</code> file in your project root with project overview, tech stack, and coding conventions.</p>
+                        <pre class="code-example"><code># Project: My Awesome App
+
+## Tech Stack
+- Next.js 14 with App Router
+- TypeScript
+- Tailwind CSS
+- Prisma + PostgreSQL
+
+## Conventions
+- Use functional components
+- Prefer named exports
+- Use absolute imports (@/)</code></pre>
+                    </div>
+                </div>
+                <div class="bp-check-item">
+                    <span class="check-number">2</span>
+                    <div class="check-content">
+                        <h3>Set Up Your Memory</h3>
+                        <p>Use <code>/memory</code> to store persistent context about your project that carries across sessions.</p>
+                        <pre class="code-example"><code>/memory add "This project uses the repository pattern for data access"
+/memory add "All API routes should include rate limiting middleware"</code></pre>
+                    </div>
+                </div>
+                <div class="bp-check-item">
+                    <span class="check-number">3</span>
+                    <div class="check-content">
+                        <h3>Install Essential Plugins</h3>
+                        <p>Extend Claude Code's capabilities with powerful plugins for your workflow.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Plugins Section -->
+        <section class="bp-section">
+            <div class="bp-section-header">
+                <span class="bp-section-icon">🔌</span>
+                <h2>Essential Plugins</h2>
+            </div>
+            <p class="bp-section-desc">Install these plugins to supercharge your Claude Code experience. Use <code>/install-plugin [name]</code> or add them to your <code>.claude/plugins</code> configuration.</p>
+
+            <div class="plugins-grid">
+                <!-- Feature Dev Plugin -->
+                <div class="plugin-card featured">
+                    <div class="plugin-header">
+                        <div class="plugin-icon">🏗️</div>
+                        <div class="plugin-meta">
+                            <h3>feature-dev</h3>
+                            <span class="plugin-tag">Development</span>
+                        </div>
+                    </div>
+                    <p class="plugin-desc">Structured feature development workflow with automatic planning, implementation, and testing phases. Creates feature branches, writes tests, and ensures code quality.</p>
+                    <div class="plugin-features">
+                        <span>Auto-planning</span>
+                        <span>Test generation</span>
+                        <span>PR creation</span>
+                    </div>
+                    <pre class="plugin-usage"><code>/feature-dev "Add user authentication with OAuth"</code></pre>
+                </div>
+
+                <!-- Frontend Designer Plugin -->
+                <div class="plugin-card featured">
+                    <div class="plugin-header">
+                        <div class="plugin-icon">🎨</div>
+                        <div class="plugin-meta">
+                            <h3>frontend-designer</h3>
+                            <span class="plugin-tag">Design</span>
+                        </div>
+                    </div>
+                    <p class="plugin-desc">AI-powered UI/UX design assistant. Generates responsive components, suggests color schemes, ensures accessibility compliance, and creates design systems.</p>
+                    <div class="plugin-features">
+                        <span>Component generation</span>
+                        <span>A11y checks</span>
+                        <span>Design tokens</span>
+                    </div>
+                    <pre class="plugin-usage"><code>/design "Create a modern dashboard layout with sidebar"</code></pre>
+                </div>
+
+                <!-- Code Review Plugin -->
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon">🔍</div>
+                        <div class="plugin-meta">
+                            <h3>code-review</h3>
+                            <span class="plugin-tag">Quality</span>
+                        </div>
+                    </div>
+                    <p class="plugin-desc">Automated code review with security scanning, performance analysis, and best practice enforcement. Integrates with your CI/CD pipeline.</p>
+                    <div class="plugin-features">
+                        <span>Security scan</span>
+                        <span>Performance tips</span>
+                        <span>Style guide</span>
+                    </div>
+                    <pre class="plugin-usage"><code>/review --staged</code></pre>
+                </div>
+
+                <!-- Test Generator Plugin -->
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon">🧪</div>
+                        <div class="plugin-meta">
+                            <h3>test-generator</h3>
+                            <span class="plugin-tag">Testing</span>
+                        </div>
+                    </div>
+                    <p class="plugin-desc">Intelligent test generation for your codebase. Creates unit tests, integration tests, and e2e tests with high coverage and edge case handling.</p>
+                    <div class="plugin-features">
+                        <span>Unit tests</span>
+                        <span>E2E tests</span>
+                        <span>Coverage reports</span>
+                    </div>
+                    <pre class="plugin-usage"><code>/generate-tests src/services/auth.ts</code></pre>
+                </div>
+
+                <!-- API Builder Plugin -->
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon">🔗</div>
+                        <div class="plugin-meta">
+                            <h3>api-builder</h3>
+                            <span class="plugin-tag">Backend</span>
+                        </div>
+                    </div>
+                    <p class="plugin-desc">Rapid API development with automatic OpenAPI spec generation, validation middleware, and client SDK creation.</p>
+                    <div class="plugin-features">
+                        <span>OpenAPI gen</span>
+                        <span>Validation</span>
+                        <span>SDK export</span>
+                    </div>
+                    <pre class="plugin-usage"><code>/api create "User CRUD endpoints with pagination"</code></pre>
+                </div>
+
+                <!-- Database Helper Plugin -->
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon">🗄️</div>
+                        <div class="plugin-meta">
+                            <h3>db-helper</h3>
+                            <span class="plugin-tag">Database</span>
+                        </div>
+                    </div>
+                    <p class="plugin-desc">Database schema design, migration generation, and query optimization. Supports Prisma, Drizzle, TypeORM, and raw SQL.</p>
+                    <div class="plugin-features">
+                        <span>Schema design</span>
+                        <span>Migrations</span>
+                        <span>Query optimization</span>
+                    </div>
+                    <pre class="plugin-usage"><code>/db schema "E-commerce with products, orders, users"</code></pre>
+                </div>
+
+                <!-- Docs Generator Plugin -->
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon">📚</div>
+                        <div class="plugin-meta">
+                            <h3>docs-generator</h3>
+                            <span class="plugin-tag">Documentation</span>
+                        </div>
+                    </div>
+                    <p class="plugin-desc">Automatic documentation generation from your code. Creates README files, API docs, JSDoc comments, and architectural diagrams.</p>
+                    <div class="plugin-features">
+                        <span>README gen</span>
+                        <span>API docs</span>
+                        <span>Diagrams</span>
+                    </div>
+                    <pre class="plugin-usage"><code>/docs generate --format markdown</code></pre>
+                </div>
+
+                <!-- Git Workflow Plugin -->
+                <div class="plugin-card">
+                    <div class="plugin-header">
+                        <div class="plugin-icon">🌿</div>
+                        <div class="plugin-meta">
+                            <h3>git-workflow</h3>
+                            <span class="plugin-tag">DevOps</span>
+                        </div>
+                    </div>
+                    <p class="plugin-desc">Enhanced Git operations with smart commit messages, branch management, conflict resolution assistance, and changelog generation.</p>
+                    <div class="plugin-features">
+                        <span>Smart commits</span>
+                        <span>PR templates</span>
+                        <span>Changelog</span>
+                    </div>
+                    <pre class="plugin-usage"><code>/git commit --smart</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Best Practices Section -->
+        <section class="bp-section">
+            <div class="bp-section-header">
+                <span class="bp-section-icon">💡</span>
+                <h2>Best Practices</h2>
+            </div>
+
+            <div class="practices-grid">
+                <div class="practice-card">
+                    <h3>Start with Context</h3>
+                    <p>Always begin a new session by letting Claude explore your codebase. Use commands like:</p>
+                    <pre class="code-example"><code>"Explore this codebase and understand the architecture"
+"Read the main entry points and summarize the project structure"</code></pre>
+                </div>
+
+                <div class="practice-card">
+                    <h3>Be Specific with Requirements</h3>
+                    <p>Provide clear, detailed requirements. Instead of vague requests, be explicit:</p>
+                    <pre class="code-example"><code>❌ "Add authentication"
+✅ "Add JWT authentication with refresh tokens,
+   bcrypt password hashing, and rate limiting
+   on the login endpoint"</code></pre>
+                </div>
+
+                <div class="practice-card">
+                    <h3>Use Plan Mode for Complex Tasks</h3>
+                    <p>For multi-step features, ask Claude to plan first:</p>
+                    <pre class="code-example"><code>"Plan the implementation for adding a shopping cart
+feature. Don't write code yet, just outline the
+approach and files that need to be modified."</code></pre>
+                </div>
+
+                <div class="practice-card">
+                    <h3>Leverage the Todo System</h3>
+                    <p>For large tasks, Claude uses a todo system to track progress. You can see the current todos and their status as work progresses.</p>
+                </div>
+
+                <div class="practice-card">
+                    <h3>Review Before Committing</h3>
+                    <p>Always review generated code before committing. Ask Claude to explain any complex logic:</p>
+                    <pre class="code-example"><code>"Explain the authentication middleware you just created"
+"What are the edge cases this code handles?"</code></pre>
+                </div>
+
+                <div class="practice-card">
+                    <h3>Iterate and Refine</h3>
+                    <p>Don't hesitate to ask for improvements or alternatives:</p>
+                    <pre class="code-example"><code>"Can you make this more performant?"
+"Refactor this to be more readable"
+"Add error handling for edge cases"</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Templates Section -->
+        <section class="bp-section">
+            <div class="bp-section-header">
+                <span class="bp-section-icon">📁</span>
+                <h2>Recommended Project Structure</h2>
+            </div>
+            <div class="structure-container">
+                <pre class="structure-tree"><code>my-project/
+├── .claude/
+│   ├── plugins/           # Installed plugins
+│   ├── commands/          # Custom slash commands
+│   └── settings.json      # Claude Code settings
+├── CLAUDE.md              # Project context for Claude
+├── src/
+│   ├── components/
+│   ├── services/
+│   ├── utils/
+│   └── ...
+├── tests/
+├── docs/
+│   └── ARCHITECTURE.md    # System architecture docs
+└── README.md</code></pre>
+                <div class="structure-tips">
+                    <h4>Key Files for Claude</h4>
+                    <ul>
+                        <li><strong>CLAUDE.md</strong> - Project context, conventions, and important notes</li>
+                        <li><strong>.claude/commands/</strong> - Custom slash commands for your workflow</li>
+                        <li><strong>ARCHITECTURE.md</strong> - System design docs Claude can reference</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="/themes.js"></script>
+</body>
+</html>
