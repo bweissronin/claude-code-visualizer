@@ -15,7 +15,8 @@
       "WebFetch(domain:static.vecteezy.com)",
       "Bash(git init:*)",
       "Bash(git branch:*)",
-      "Bash(git remote add:*)"
+      "Bash(git remote add:*)",
+      "Bash(git -C nextjs-app remote -v)"
     ],
     "deny": [],
     "ask": []
