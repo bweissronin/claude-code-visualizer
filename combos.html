@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code Combos - Workflow Recipes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="themes.css">
+    <link rel="stylesheet" href="combos.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="control-bar">
+        <div class="logo">
+            <span class="logo-icon">◈</span>
+            <span class="logo-text">Claude Code</span>
+            <span class="logo-subtitle">Workflow Combos</span>
+        </div>
+
+        <nav class="page-nav">
+            <a href="index.html" class="nav-link">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="9"/>
+                    <circle cx="12" cy="12" r="4"/>
+                </svg>
+                Visualizer
+            </a>
+            <a href="combos.html" class="nav-link active">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+                Combos
+            </a>
+        </nav>
+
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search combos..." autocomplete="off">
+            <span class="search-icon">⌘K</span>
+        </div>
+    </header>
+
+    <!-- Category filter bar for combos -->
+    <div class="combos-filter-bar">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="development">Development</button>
+        <button class="filter-btn" data-category="debugging">Debugging</button>
+        <button class="filter-btn" data-category="refactoring">Refactoring</button>
+        <button class="filter-btn" data-category="devops">DevOps</button>
+        <button class="filter-btn" data-category="research">Research</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="combos-container">
+        <div class="combos-intro">
+            <h1>Workflow Combos</h1>
+            <p>Powerful recipes that chain Claude Code capabilities together for maximum productivity.</p>
+        </div>
+
+        <div class="combos-grid" id="combos-grid">
+            <!-- Combos will be rendered here -->
+        </div>
+    </main>
+
+    <!-- Combo Detail Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="combo-modal">
+            <button class="modal-close" id="modal-close">&times;</button>
+
+            <div class="modal-header">
+                <span class="modal-category" id="modal-category">CATEGORY</span>
+                <h2 class="modal-title" id="modal-title">Combo Name</h2>
+                <p class="modal-description" id="modal-description">Description</p>
+            </div>
+
+            <div class="modal-body">
+                <section class="modal-section">
+                    <h3>Capabilities Used</h3>
+                    <div class="capabilities-flow" id="modal-capabilities"></div>
+                </section>
+
+                <section class="modal-section">
+                    <h3>Workflow Steps</h3>
+                    <div class="workflow-steps" id="modal-steps"></div>
+                </section>
+
+                <section class="modal-section">
+                    <h3>Example Prompt</h3>
+                    <pre class="code-block" id="modal-prompt"><code></code></pre>
+                    <button class="copy-btn" id="copy-prompt">Copy Prompt</button>
+                </section>
+
+                <section class="modal-section">
+                    <h3>Pro Tips</h3>
+                    <ul class="tips-list" id="modal-tips"></ul>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loader">
+            <div class="loader-ring"></div>
+            <span>Loading combos...</span>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="themes.js"></script>
+    <script src="combos-data.js"></script>
+    <script src="combos.js"></script>
+</body>
+</html>

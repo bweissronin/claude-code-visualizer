@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code Capabilities Visualizer</title>
+    <!-- Distinctive Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="themes.css">
+</head>
+<body>
+    <!-- Header Controls -->
+    <header class="control-bar">
+        <div class="logo">
+            <span class="logo-icon">◈</span>
+            <span class="logo-text">Claude Code</span>
+            <span class="logo-subtitle">Capabilities Visualizer</span>
+        </div>
+
+        <nav class="page-nav">
+            <a href="index.html" class="nav-link active">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="9"/>
+                    <circle cx="12" cy="12" r="4"/>
+                </svg>
+                Visualizer
+            </a>
+            <a href="combos.html" class="nav-link">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+                Combos
+            </a>
+        </nav>
+
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <svg class="search-magnifier" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="7"/>
+                    <path d="M21 21l-4.35-4.35"/>
+                </svg>
+                <input type="text" id="search" placeholder="Search capabilities..." autocomplete="off">
+                <span class="search-shortcut">⌘K</span>
+            </div>
+            <div class="search-dropdown" id="search-dropdown">
+                <div class="search-results" id="search-results"></div>
+                <div class="search-footer">
+                    <span><kbd>↑</kbd><kbd>↓</kbd> Navigate</span>
+                    <span><kbd>↵</kbd> Select</span>
+                    <span><kbd>esc</kbd> Close</span>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- Category filter bar -->
+    <div class="viz-filter-bar">
+        <button class="filter-btn active" data-category="agents">Agents</button>
+        <button class="filter-btn active" data-category="tools">Tools</button>
+        <button class="filter-btn active" data-category="commands">Commands</button>
+        <button class="filter-btn active" data-category="skills">Skills</button>
+        <button class="filter-btn active" data-category="integrations">Integrations</button>
+        <button class="filter-btn active" data-category="config">Config</button>
+    </div>
+
+    <!-- Main Visualization Canvas -->
+    <main class="visualization-container">
+        <canvas id="connections-canvas"></canvas>
+        <div id="nodes-container"></div>
+
+        <!-- Zoom controls -->
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoom-in" title="Zoom In (+)">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                    <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="2"/>
+                    <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </button>
+            <span class="zoom-level" id="zoom-level">100%</span>
+            <button class="zoom-btn" id="zoom-out" title="Zoom Out (-)">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                    <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </button>
+            <button class="zoom-btn" id="zoom-reset" title="Reset Zoom (0)">
+                <svg viewBox="0 0 24 24" width="20" height="20">
+                    <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Side Panel for Details -->
+    <aside id="side-panel" class="side-panel">
+        <button class="panel-close" id="panel-close">×</button>
+
+        <div class="panel-content">
+            <div class="panel-header">
+                <span class="panel-category" id="panel-category">CATEGORY</span>
+                <h2 class="panel-title" id="panel-title">Capability Name</h2>
+            </div>
+
+            <section class="panel-section">
+                <h3>Description</h3>
+                <p id="panel-description">Description of the capability goes here.</p>
+            </section>
+
+            <section class="panel-section">
+                <h3>Usage</h3>
+                <pre class="code-block" id="panel-usage"><code></code></pre>
+            </section>
+
+            <section class="panel-section">
+                <h3>Example</h3>
+                <pre class="code-block" id="panel-example"><code></code></pre>
+            </section>
+
+            <section class="panel-section">
+                <h3>Ideas & Use Cases</h3>
+                <ul class="ideas-list" id="panel-ideas"></ul>
+            </section>
+
+            <section class="panel-section">
+                <h3>Connections</h3>
+                <div class="connections-flow" id="panel-connections"></div>
+            </section>
+        </div>
+    </aside>
+
+    <!-- Loading overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loader">
+            <div class="loader-ring">
+                <div class="loader-sun"></div>
+            </div>
+            <span>Initializing visualization...</span>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="themes.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
